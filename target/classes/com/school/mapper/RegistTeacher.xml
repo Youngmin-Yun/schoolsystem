@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.mapper.RegistTeacher">
+<insert id="addTeacher">
+INSERT INTO regist_teacher (ret_name, ret_pwd, ret_email, ret_address, ret_phone, ret_subject, ret_id, ret_birth)
+VALUES(#{ret_name}, #{ret_pwd}, #{ret_email}, #{ret_address}, #{ret_phone}, #{ret_subject}, #{ret_id}, #{ret_birth});
+</insert>
+<select id="selectTeacherByID" resultType="java.lang.Integer">
+SELECT count(*) from regist_teacher where ret_id = #{id};
+</select>
+<select id="selectTeacherByEmail" resultType="java.lang.Integer">
+SELECT count(*) from regist_teacher where ret_email = #{email};
+</select>
+<select id = "allTeacher" resultType = "com.school.vo.AdminVO">
+select * from regist_teacher;
+</select> 
+</mapper>

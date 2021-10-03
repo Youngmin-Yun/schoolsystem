@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.mapper.AdminMapper">
+    <insert id = "addEvent">
+    INSERT INTO admin(ad_event_date, ad_event_content)VALUES(#{ad_event_date}, #{ad_event_content});
+    </insert>
+    <select id = "eventList" resultType="com.school.vo.AdminVO">
+    SELECT * FROM admin order by ad_event_date 
+    </select>
+    <select id = "selectEvent" resultType="com.school.vo.AdminVO">
+      SELECT * FROM admin WHERE ad_event_date &gt;= #{startDate} AND ad_event_date &lt; #{endDate};
+    </select>
+    <delete id ="deleteEvent">
+    DELETE FROM admin WHERE ad_seq=#{seq};
+    </delete>
+    <update id = "changeEvent">
+      UPDATE admin SET ad_event_date=#{ad_event_date}, ad_event_content=#{ad_event_content} WHERE ad_seq=#{ad_seq};
+    </update>
+    <update id ="studentClass">
+      UPDATE regist_student  set res_class_room = (SELECT CAST(RAND() * 4 AS SIGNED) + 1) where res_age=#{age};
+    </update>
+    <update id = "teacherClass">
+      update regist_teacher set ret_class_room = #{class_room}, ret_grade_age= #{grade} where ret_name = #{name};
+    </update>
+     <insert id = "updateAdminInfo">
+    UPDATE admin_regist SET ad_id=#{ad_id}, ad_pwd=#{ad_pwd}, ad_name=#{ad_name}, ad_address=#{ad_address}, ad_phone=#{ad_phone}, ad_email=#{ad_email} WHERE ad_seq=#{ad_seq};
+    </insert>
+</mapper>

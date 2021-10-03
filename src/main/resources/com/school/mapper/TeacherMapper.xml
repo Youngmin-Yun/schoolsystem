@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.mapper.TeacherMapper">
+    <select id = "selectClass" resultType = "com.school.vo.RegistStudentVO">
+        select * from regist_student as s inner join regist_teacher as t on s.res_age = #{grade} and t.ret_grade_age = ${grade} and t.ret_class_room = #{room} and s.res_class_room = #{room};
+    </select>
+    <select id = "eventList" resultType="com.school.vo.AdminVO">
+        SELECT * FROM admin order by ad_event_date 
+    </select>
+    <select id = "noticeSchool" resultType = "com.school.vo.NoticeVO">
+        SELECT * FROM notice as a inner join regist_teacher as b on a.noti_writer = b.ret_seq order by noti_date;
+    </select>
+    <select id = "schoolTeacher" resultType = "com.school.vo.RegistTeacherVO">
+        select * from regist_teacher;
+    </select>
+    <select id = "allStudent" resultType = "com.school.vo.RegistStudentVO">
+        select * from regist_student;
+    </select>
+    <insert id = "enterNotice">
+    INSERT INTO notice(noti_date, noti_content, noti_writer, noti_title) VALUES(#{noti_date},#{noti_content},#{noti_writer},#{noti_title})
+    </insert>
+    <insert id = "enterNoticeClass">
+    INSERT INTO notice_class (nc_title, nc_content, nc_date, nc_class_room, nc_grade_age)VALUES(#{nc_title}, #{nc_content}, #{nc_date}, #{nc_class_room}, #{nc_grade_age});
+    </insert>
+    <insert id = "updateTeacherInfo">
+    UPDATE regist_teacher SET ret_name=#{ret_name}, ret_pwd=#{ret_pwd}, ret_email=#{ret_email}, ret_address=#{ret_address}, ret_phone=#{ret_phone}, ret_id=#{ret_id} WHERE ret_seq=#{ret_seq};
+    </insert>
+</mapper>

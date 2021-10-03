@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.mapper.TestMapper">
+    <insert id = "insertScore">
+    INSERT INTO test (t_semester, t_term, t_subject, t_score, t_res_seq,t_res_age) VALUES (#{t_semester}, #{t_term}, #{t_subject}, #{t_score}, #{t_res_seq}, #{t_res_age});
+    </insert>
+    <select id = "subjectList" resultType = "com.school.vo.SubjectVO">
+    select * from subject;
+    </select>
+    <!-- 전 학생 점수 -->
+    <select id = "classScore" resultType = "com.school.vo.TestVO">
+        SELECT * from test as a inner join regist_student as b where a.t_res_seq = b.res_seq
+    </select>
+    <!-- 개인 합산 점수 -->
+    <select id = "personalTotalScore" resultType = "com.school.vo.TestVO">
+        select SUM(t_score)from test where t_res_seq = {seq}
+    </select>
+</mapper>

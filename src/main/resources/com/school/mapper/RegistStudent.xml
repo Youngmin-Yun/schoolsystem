@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.mapper.RegistStudent">
+<insert id="addStudent">
+INSERT INTO regist_student (res_id, res_pwd, res_email, res_address, res_phone, res_phone2, res_birth, res_name, res_age)
+VALUES(#{res_id}, #{res_pwd}, #{res_email}, #{res_address}, #{res_phone}, #{res_phone2}, #{res_birth}, #{res_name}, (year(now()) - year(res_birth)+1));
+</insert>
+<select id="selectStudentByID" resultType="java.lang.Integer">
+SELECT count(*) from regist_student where res_id = #{id};
+</select>
+<select id="selectStudentByEmail" resultType="java.lang.Integer">
+SELECT count(*) from regist_student where res_email = #{email};
+</select>
+<select id ="allStudent" resultType = "com.school.vo.AdminVO">
+select * from regist_student;
+</select>
+</mapper>

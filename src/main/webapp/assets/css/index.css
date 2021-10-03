@@ -1,0 +1,22 @@
+html {
+    background-color: rgba(180, 228, 247, 0.769);
+  }
+.login_title{font-family: "Roboto", sans-serif; color: #333; font-weight: 700;
+    font-size: 30px; text-decoration: none; text-align: center; padding: 20px 0; 
+    background-color: skyblue; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-top: 50px;
+    border-radius: 5px; margin-bottom: 25px;}
+    
+.login_all {text-align: center; font-size: 30px; font-family: "Roboto", sans-serif; text-decoration: none;}
+
+.student{
+    margin-bottom: 20px; border-radius: 5px; background-color: rgba(0, 128, 0, 0.564); 
+    height: 100px; text-align: center; width: 200px;
+}
+.teacher{
+    margin-bottom: 20px; border-radius: 5px; background-color: rgba(125, 131, 206, 0.653); 
+    height: 100px; text-align: center; width: 200px;
+}
+.admin{
+    margin-bottom: 20px; border-radius: 5px; background-color: rgba(161, 116, 176, 0.577); 
+    height: 100px; text-align: center; width: 200px;
+}

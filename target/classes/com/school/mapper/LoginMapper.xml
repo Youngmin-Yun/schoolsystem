@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.mapper.LoginMapper">
+    <select id = "loginTeacher" resultType = "java.lang.Integer">
+        select count(*) from regist_teacher where ret_id=#{id} and ret_pwd = #{pwd};
+    </select>
+    <select id= "selectTeacherById" resultType = "com.school.vo.RegistTeacherVO">
+        select ret_seq,ret_name,ret_pwd,ret_email,ret_address,ret_phone,ret_subject,ret_id,ret_birth,ret_class_room,ret_grade_age from regist_teacher where ret_id = #{id}
+    </select>
+    <select id = "loginAdmin" resultType = "java.lang.Integer">
+        select count(*) from admin_regist where ad_id=#{id} and ad_pwd = #{pwd};
+    </select>
+    <select id ="selectAdminById" resultType = "com.school.vo.AdminRegistVO">
+        SELECT ad_seq, ad_id, ad_pwd, ad_name, ad_address, ad_phone, ad_email, ad_status, ad_birth FROM admin_regist where ad_id = #{id}
+    </select>
+     <select id = "loginStudent" resultType = "java.lang.Integer">
+        select count(*) from regist_student where res_id=#{id} and res_pwd = #{pwd};
+    </select>
+    <select id ="selectStudentById" resultType = "com.school.vo.RegistStudentVO">
+        SELECT * FROM regist_student where res_id = #{id}
+    </select>
+</mapper>

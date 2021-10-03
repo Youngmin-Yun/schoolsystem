@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.mapper.StudentMapper">
+    <select id = "selectClass" resultType = "com.school.vo.RegistStudentVO">
+        select * from regist_student as s inner join regist_teacher as t on s.res_age = #{grade} and ret_grade_age = #{grade} and t.ret_class_room = #{room} and s.res_class_room = #{room};
+    </select>
+    <select id = "eventList" resultType="com.school.vo.AdminVO">
+        SELECT * FROM admin order by ad_event_date 
+    </select>
+    <select id = "classEvent" resultType = "com.school.vo.NoticeClassVO">
+        select * from notice_class where nc_class_room = #{room} and nc_grade_age = #{grade} order by nc_date;
+    </select>
+    <update id = "updateStudentInfo">
+    UPDATE regist_student SET res_id=#{res_id}, res_pwd=#{res_pwd}, res_email=#{res_email}, res_address=#{res_address}, res_phone=#{res_phone}, res_phone2=#{res_phone2} WHERE res_seq=#{res_seq};
+    </update>
+</mapper>
